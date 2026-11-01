@@ -1,0 +1,7 @@
+example_row,true_code,true_name
+0,1001,A-G: fase A ke tanah
+1,0000,Normal
+2,1011,AB-G: fase A dan B ke tanah
+3,0111,ABC: tiga fase
+4,0110,BC: antar fase B dan C
+5,1111,ABC-G: tiga fase ke tanah

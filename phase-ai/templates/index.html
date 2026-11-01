@@ -1,0 +1,1683 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101114">
+<title>PHASE/AI — Transmission Fault Analysis</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #101114;
+  --panel: #1c1d22;
+  --soft: #25262d;
+  --line: #33343d;
+  --text: #f5f5f7;
+  --muted: #aaaab7;
+  --blue: #0a84ff;
+  --amber: #f0ac4a;
+  --green: #60cc92;
+  --red: #ff746d;
+  --a: #e8c547;
+  --b: #64cca1;
+  --c: #79a9ff;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: .65; }
+button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+.mono { font-family: var(--mono); }
+
+/* HEADER */
+.topbar {
+  height: 69px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 max(24px, calc((100vw - 1250px)/2));
+  border-bottom: 1px solid #ffffff12;
+  background: #15161ab8;
+  backdrop-filter: blur(18px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.logo {
+  height: 36px;
+  width: 36px;
+  border-radius: 11px;
+  background: #ffffff0e;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+.brand { font-size: 18px; letter-spacing: -.6px; font-weight: 700; }
+.grow { flex: 1; }
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  padding: 8px 13px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.status i {
+  background: var(--amber);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+#clock { font-size: 12px; color: #898995; font-variant-numeric: tabular-nums; }
+
+/* HERO */
+.wrap { max-width: 1250px; margin: auto; padding: 42px 24px 34px; }
+.eyebrow { font-size: 11px; font-weight: 650; letter-spacing: 2px; color: #9696a2; }
+.hero { margin-bottom: 27px; }
+.hero h1 {
+  font-size: clamp(32px, 4.5vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -2.5px;
+  font-weight: 700;
+  margin: 10px 0 11px;
+}
+.hero h1 span { color: var(--blue); }
+.hero p { margin: 0; color: var(--muted); font-size: 14px; max-width: 660px; }
+
+/* PANELS */
+.panel {
+  background: var(--panel);
+  border: 1px solid #ffffff13;
+  border-radius: 19px;
+  overflow: hidden;
+}
+.panel-head { padding: 20px 23px; display: flex; align-items: center; gap: 12px; }
+.panel-head h2 { margin: 0; font-size: 18px; font-weight: 650; letter-spacing: -.5px; }
+.panel-head small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+.pill {
+  margin-left: auto;
+  border-radius: 8px;
+  background: var(--soft);
+  color: #bbbcc6;
+  padding: 6px 9px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* SIGNAL MONITOR */
+.scope .panel-head { border-bottom: 1px solid #ffffff0b; }
+.scope-controls { display: flex; gap: 6px; margin-left: auto; }
+.scope-controls button {
+  border: 0;
+  background: #31323a;
+  color: #c6c7d1;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 650;
+  padding: 8px 14px;
+}
+.scope-controls button.on { background: #ededf2; color: #1b1b20; }
+.scope-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.trace { min-width: 0; padding: 15px 19px 10px; }
+.trace + .trace { border-left: 1px solid #ffffff12; }
+.trace-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #c2c3ce;
+  font-size: 11px;
+  font-weight: 650;
+}
+.trace-top .read {
+  color: #9fa1ae;
+  font: 10px var(--mono);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.trace canvas { display: block; width: 100%; height: 153px; }
+
+/* MAIN GRID */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.02fr .98fr;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: stretch;
+}
+.content { padding: 0 23px 24px; }
+
+/* PHASE INPUT */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 3px;
+}
+.phase {
+  background: #26272e;
+  border: 1px solid #ffffff0d;
+  border-radius: 14px;
+  padding: 14px 12px;
+  transition: background .2s, border-color .2s;
+}
+.phase.affected { background: #332b25; border-color: #f0ac4a85; }
+.phase-head {
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17px;
+}
+.phase-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 7px;
+  background: var(--phase);
+}
+.phase-name { display: flex; align-items: center; }
+.phase-index { font: 10px var(--mono); color: #9595a2; }
+.field { display: block; margin-top: 11px; }
+.field-label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 11px; }
+.input-wrap {
+  background: #18191e;
+  border: 1px solid #42434c;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  transition: border-color .2s, box-shadow .2s;
+}
+.input-wrap:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px #0a84ff30;
+}
+.input-wrap.invalid { border-color: var(--red); }
+.input-wrap input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--text);
+  width: 100%;
+  min-width: 0;
+  padding: 11px 9px;
+  font-size: 16px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.input-wrap input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.unit { padding-right: 9px; color: #9696a3; font-size: 11px; }
+.error { margin-top: 11px; color: var(--red); font-size: 12px; display: none; }
+.error.show { display: block; }
+
+/* SAMPLES */
+.subhead { font-size: 13px; font-weight: 650; margin: 23px 0 11px; }
+.samples {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.sample {
+  min-height: 40px;
+  background: #2b2c33;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #c9c9d3;
+  padding: 10px 5px;
+  font-size: 11px;
+  font-weight: 650;
+}
+.sample:hover { background: #393a43; }
+.sample.active { background: #e9e9ef; color: #17181d; }
+.scenario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 13px;
+  padding: 11px 12px;
+  border-radius: 10px;
+  background: #24252b;
+  color: #c7c7d0;
+  font-size: 12px;
+}
+.scenario span { flex: 1; }
+.reset {
+  background: #363740;
+  border: 0;
+  border-radius: 7px;
+  padding: 6px 10px;
+  color: #c6c6d0;
+  font-size: 10px;
+  font-weight: 650;
+}
+.primary {
+  margin-top: 18px;
+  width: 100%;
+  background: var(--blue);
+  border: 0;
+  border-radius: 11px;
+  color: white;
+  padding: 15px;
+  font-weight: 650;
+  font-size: 14px;
+  transition: background .2s;
+}
+.primary:hover:not(:disabled) { background: #2997ff; }
+.note { color: #91919e; font-size: 11px; margin: 11px 0 0; line-height: 1.5; }
+
+/* ANALYSIS PROGRESS */
+.pipeline { padding: 0 23px 16px; }
+.pipeline-title {
+  font-size: 11px;
+  letter-spacing: .4px;
+  color: #a7a7b2;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 11px;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #858691;
+  white-space: nowrap;
+}
+.step b {
+  width: 25px;
+  height: 25px;
+  background: #2c2d35;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+}
+.step.active { color: #85beff; }
+.step.active b { background: var(--blue); color: white; }
+.step.done { color: var(--green); }
+.step.done b { background: #24503a; color: #9ff2bd; }
+.progress {
+  height: 3px;
+  background: #373842;
+  border-radius: 8px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--blue);
+  transition: width .24s;
+}
+
+/* RESULT */
+.result { padding: 0 23px 24px; min-height: 345px; }
+.idle, .loading {
+  min-height: 320px;
+  border-radius: 13px;
+  background: #24252b;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+}
+.idle-icon {
+  border-radius: 50%;
+  background: #323642;
+  width: 65px;
+  height: 65px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  color: #c3d6ec;
+  font-size: 29px;
+}
+.idle h3 { font-size: 18px; letter-spacing: -.5px; margin: 0 0 5px; }
+.idle p, .loading p { color: var(--muted); margin: 0; font-size: 12px; }
+.spinner {
+  width: 37px;
+  height: 37px;
+  border: 3px solid #0a84ff35;
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  margin: 0 auto 17px;
+  animation: spin .75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading h3 { font-size: 13px; letter-spacing: .5px; margin: 0 0 7px; }
+.result-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cls {
+  font-size: clamp(36px, 4.3vw, 53px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+.cls.fault { color: var(--amber); }
+.cls.normal { color: var(--green); }
+.result-badge {
+  background: #5e462825;
+  color: var(--amber);
+  border: 1px solid #f0ac4a35;
+  padding: 6px 9px;
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 650;
+}
+.result-badge.normal {
+  background: #27533730;
+  color: var(--green);
+  border-color: #60cc9244;
+}
+.desc {
+  color: #bfc0c9;
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 11px 0 15px;
+}
+
+/* DIAGRAM */
+.diagram {
+  border: 1px solid #ffffff15;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #18191f;
+}
+.diagram-title {
+  padding: 11px 13px;
+  font-weight: 650;
+  font-size: 12px;
+  border-bottom: 1px solid #ffffff10;
+}
+.diagram svg { width: 100%; height: auto; display: block; }
+.conductor { cursor: pointer; }
+.conductor:focus { outline: none; filter: drop-shadow(0 0 7px #f0ac4a); }
+.conductor.selected { filter: drop-shadow(0 0 7px #f0ac4a); }
+.conductor.dim { opacity: .23; }
+.diagram-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: #202127;
+}
+.diagram-toolbar span {
+  font-size: 10px;
+  color: var(--muted);
+  margin-right: auto;
+}
+.focus {
+  padding: 6px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: #363741;
+  color: #ced0da;
+  font-size: 10px;
+}
+.focus.active { background: #ededf2; color: #1c1d21; }
+.insight {
+  display: flex;
+  gap: 10px;
+  background: #282930;
+  border-radius: 10px;
+  padding: 13px;
+  margin-top: 12px;
+}
+.insight-icon {
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  background: #3a342b;
+  color: var(--amber);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+.insight strong { font-size: 12px; }
+.insight p {
+  color: #c0c0ca;
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 4px 0 0;
+}
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.meta span {
+  font-size: 10px;
+  color: #b5b5c1;
+  background: #292a31;
+  padding: 6px 9px;
+  border-radius: 7px;
+}
+
+/* FOOTER */
+.legend {
+  margin-top: 20px;
+  padding: 17px 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+.legend > span {
+  font-size: 12px;
+  font-weight: 650;
+  color: #c6c6d0;
+  margin-right: 6px;
+}
+.legend code {
+  font: 11px var(--font);
+  background: #2b2c33;
+  color: #bebec9;
+  padding: 6px 9px;
+  border-radius: 7px;
+}
+.legend code.hit { background: #4a3828; color: #ffca83; }
+.dataset-explainer {
+  margin-top: 15px;
+  padding: 16px 20px;
+  border: 1px solid #ffffff13;
+  background: #1c1d22;
+  border-radius: 14px;
+  display: grid;
+  gap: 5px;
+  color: #a9aab6;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.dataset-explainer strong { color: #f5f5f7; font-size: 12px; }
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #878793;
+  font-size: 10px;
+  margin-top: 18px;
+}
+.phase input:disabled { opacity: .7; }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .main-grid, .scope-grid { grid-template-columns: 1fr; }
+  .trace + .trace { border-left: 0; border-top: 1px solid #ffffff12; }
+}
+@media (max-width: 650px) {
+  .topbar { height: 60px; padding: 0 15px; }
+  .status { font-size: 0; padding: 10px; }
+  .status i { margin: 0; }
+  #clock { display: none; }
+  .wrap { padding: 26px 13px; }
+  .hero h1 { letter-spacing: -1.5px; }
+  .panel-head { padding: 18px; }
+  .content, .pipeline, .result { padding-left: 17px; padding-right: 17px; }
+  .phase-grid { grid-template-columns: 1fr; }
+  .phase { display: grid; grid-template-columns: 1fr 1fr; gap: 0 11px; }
+  .phase-head { grid-column: 1/-1; margin-bottom: 6px; }
+  .field { margin-top: 7px; }
+  .samples { grid-template-columns: repeat(2, 1fr); }
+  .trace { padding: 13px; }
+  .trace-top .read { display: none; }
+  .trace canvas { height: 130px; }
+  .step { font-size: 9px; }
+  .step b { height: 22px; width: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <div class="logo" aria-hidden="true">⌁</div>
+  <div class="brand">PHASE/AI</div>
+  <div class="grow"></div>
+  <div class="status">
+    <i></i> SIMULATION · API NOT CONNECTED
+  </div>
+  <span id="clock">--:--:--</span>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">
+      TRANSMISSION LINE · THREE-PHASE INTELLIGENCE
+    </div>
+    <h1>Transmission fault analysis<span>.</span></h1>
+    <p>
+      Explore six raw signal features from a MATLAB/Simulink
+      transmission-line fault dataset. Inspect reference classes
+      and conceptual fault paths.
+    </p>
+  </div>
+
+  <section class="panel scope" aria-label="Conceptual waveform monitor">
+    <div class="panel-head">
+      <div>
+        <h2>Signal monitor</h2>
+        <small>
+          Illustrative only · six inputs are single-row samples,
+          not waveform recordings
+        </small>
+      </div>
+      <div class="scope-controls">
+        <button type="button" id="play" class="on">RUN</button>
+        <button type="button" id="hold">HOLD</button>
+      </div>
+    </div>
+
+    <div class="scope-grid">
+      <div class="trace">
+        <div class="trace-top">
+          <span>VOLTAGE CHANNELS · RAW</span>
+          <span class="read" id="vRead"></span>
+        </div>
+        <canvas id="vCanvas" aria-label="Illustrative voltage signals"></canvas>
+      </div>
+      <div class="trace">
+        <div class="trace-top">
+          <span>CURRENT CHANNELS · RAW</span>
+          <span class="read" id="iRead"></span>
+        </div>
+        <canvas id="iCanvas" aria-label="Illustrative current signals"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <div class="main-grid">
+
+    <!-- INPUT -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Input configuration</h2>
+        <span class="pill">6 RAW FEATURES</span>
+      </div>
+
+      <div class="content">
+        <div class="phase-grid">
+
+          <div class="phase" data-phase="A" style="--phase:var(--a)">
+            <div class="phase-head">
+              <span class="phase-name">
+                <i class="phase-dot"></i>PHASE A
+              </span>
+              <span class="phase-index">L1</span>
+            </div>
+            <label class="field">
+              <span class="field-label">Current / Ia</span>
+              <span class="input-wrap">
+                <input id="ia" type="number" step="any" value="37.761108" aria-label="Current phase A">
+                <span class="unit">raw</span>
+              </span>
+            </label>
+            <label class="field">
+              <span class="field-label">Voltage / Va</span>
+              <span class="input-wrap">
+                <input id="va" type="number" step="any" value="0.479851" aria-label="Voltage phase A">
+                <span class="unit">raw</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="phase" data-phase="B" style="--phase:var(--b)">
+            <div class="phase-head">
+              <span class="phase-name">
+                <i class="phase-dot"></i>PHASE B
+              </span>
+              <span class="phase-index">L2</span>
+            </div>
+            <label class="field">
+              <span class="field-label">Current / Ib</span>
+              <span class="input-wrap">
+                <input id="ib" type="number" step="any" value="-24.386917" aria-label="Current phase B">
+                <span class="unit">raw</span>
+              </span>
+            </label>
+            <label class="field">
+              <span class="field-label">Voltage / Vb</span>
+              <span class="input-wrap">
+                <input id="vb" type="number" step="any" value="0.077570" aria-label="Voltage phase B">
+                <span class="unit">raw</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="phase" data-phase="C" style="--phase:var(--c)">
+            <div class="phase-head">
+              <span class="phase-name">
+                <i class="phase-dot"></i>PHASE C
+              </span>
+              <span class="phase-index">L3</span>
+            </div>
+            <label class="field">
+              <span class="field-label">Current / Ic</span>
+              <span class="input-wrap">
+                <input id="ic" type="number" step="any" value="-16.807944" aria-label="Current phase C">
+                <span class="unit">raw</span>
+              </span>
+            </label>
+            <label class="field">
+              <span class="field-label">Voltage / Vc</span>
+              <span class="input-wrap">
+                <input id="vc" type="number" step="any" value="-0.557420" aria-label="Voltage phase C">
+                <span class="unit">raw</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="error" id="error" role="alert">
+          Semua parameter harus berisi angka yang valid.
+        </div>
+
+        <div class="subhead">Dataset test samples</div>
+        <div class="samples">
+          <button type="button" class="sample active" data-preset="normal">NORMAL</button>
+          <button type="button" class="sample" data-preset="ag">A–G</button>
+          <button type="button" class="sample" data-preset="abg">AB–G</button>
+          <button type="button" class="sample" data-preset="bc">B–C</button>
+          <button type="button" class="sample" data-preset="abc">ABC</button>
+          <button type="button" class="sample" data-preset="abcg">ABC–G</button>
+        </div>
+
+        <div class="scenario">
+          <span id="scenario">Dataset sample: Normal</span>
+          <button type="button" class="reset" id="reset">RESET</button>
+        </div>
+
+        <button type="button" class="primary" id="analyze">
+          Inspect fault scenario ↗
+        </button>
+
+        <p class="note">
+          Preset results use reference labels from Reno's test dataset.
+          Edited inputs use a nearest-example UI demo, not Scikit-Learn.
+          Units/scaling are unverified.
+        </p>
+      </div>
+    </section>
+
+    <!-- ANALYSIS -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Classification analysis</h2>
+        <span class="pill" id="resultTag">READY</span>
+      </div>
+
+      <div class="pipeline">
+        <div class="pipeline-title">
+          <span>ANALYSIS SEQUENCE</span>
+          <span id="stageText">AWAITING INPUT</span>
+        </div>
+        <div class="steps">
+          <div class="step" data-step="0"><b>01</b> VALIDATE</div>
+          <div class="step" data-step="1"><b>02</b> ANALYZE</div>
+          <div class="step" data-step="2"><b>03</b> VISUALIZE</div>
+        </div>
+        <div class="progress"><span id="progress"></span></div>
+      </div>
+
+      <div class="result" id="result" aria-live="polite">
+        <div class="idle">
+          <div>
+            <div class="idle-icon">⌁</div>
+            <h3>Ready to analyze</h3>
+            <p>Choose a scenario or adjust your measurements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="panel legend" id="legend">
+    <span>Model classes · G C B A</span>
+    <code data-class="0000">0000 · Normal</code>
+    <code data-class="1001">1001 · A–G</code>
+    <code data-class="1011">1011 · AB–G</code>
+    <code data-class="0110">0110 · B–C</code>
+    <code data-class="0111">0111 · ABC</code>
+    <code data-class="1111">1111 · ABC–G</code>
+  </div>
+
+  <div class="dataset-explainer">
+    <strong>Dataset context</strong>
+    <span>
+      Source: Kaggle Electrical Fault Detection and Classification ·
+      classData.csv. The input values are raw features from simulated
+      transmission-line measurements, not household 220 V measurements.
+      Physical units, scaling, and sampling frequency are not confirmed.
+      The moving sine curves are conceptual illustrations,
+      not reconstructed waveforms or real-time signals.
+    </span>
+  </div>
+
+  <footer class="footer">
+    <span>PHASE/AI · ACADEMIC PROTOTYPE</span>
+    <span>Dataset: classData.csv · static simulated samples · API not connected</span>
+  </footer>
+</main>
+
+<script>
+'use strict';
+
+const $ = id => document.getElementById(id);
+const fields = ['ia','ib','ic','va','vb','vc'];
+const names = ['A','B','C'];
+const colors = ['#e8c547','#64cca1','#79a9ff'];
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Class codes follow metadata label order G, C, B, A.
+const CLASSES = {
+  '0000': {
+    name: 'Normal',
+    phases: [],
+    ground: false,
+    description: 'Tidak ada kelas gangguan hubung singkat yang ditandai pada sampel referensi ini.'
+  },
+  '1001': {
+    name: 'A–G',
+    phases: ['A'],
+    ground: true,
+    description: 'Gangguan fase A ke tanah (single line-to-ground).'
+  },
+  '1011': {
+    name: 'AB–G',
+    phases: ['A','B'],
+    ground: true,
+    description: 'Gangguan fase A dan B ke tanah (double line-to-ground).'
+  },
+  '0110': {
+    name: 'B–C',
+    phases: ['B','C'],
+    ground: false,
+    description: 'Gangguan hubung singkat antara fase B dan fase C (line-to-line).'
+  },
+  '0111': {
+    name: 'ABC',
+    phases: ['A','B','C'],
+    ground: false,
+    description: 'Gangguan hubung singkat tiga fase.'
+  },
+  '1111': {
+    name: 'ABC–G',
+    phases: ['A','B','C'],
+    ground: true,
+    description: 'Gangguan tiga fase yang melibatkan tanah.'
+  }
+};
+
+// Six real samples from Reno's exported random-test predictions.
+// Preset outcome uses reference labels, not new ML inference.
+const PRESETS = {
+  normal: {
+    code: '0000',
+    row_id: 5984,
+    values: {
+      Ia: 37.76110776,
+      Ib: -24.38691671,
+      Ic: -16.80794385,
+      Va: 0.479850777,
+      Vb: 0.077569588,
+      Vc: -0.557420365
+    }
+  },
+  ag: {
+    code: '1001',
+    row_id: 558,
+    values: {
+      Ia: 289.9688789,
+      Ib: 62.23923799,
+      Ic: -46.51393737,
+      Va: -0.376420733,
+      Vb: 0.467361876,
+      Vc: -0.090941142
+    }
+  },
+  abg: {
+    code: '1011',
+    row_id: 1466,
+    values: {
+      Ia: -2.822014705,
+      Ib: 766.661911,
+      Ic: 56.15628125,
+      Va: 0.037458966,
+      Vb: -0.234010411,
+      Vc: 0.196551444
+    }
+  },
+  bc: {
+    code: '0110',
+    row_id: 2321,
+    values: {
+      Ia: 54.96569716,
+      Ib: -577.7586691,
+      Ic: 525.5154814,
+      Va: 0.24121621,
+      Vb: 0.03120012,
+      Vc: -0.27241633
+    }
+  },
+  abc: {
+    code: '0111',
+    row_id: 3918,
+    values: {
+      Ia: 862.3350572,
+      Ib: -260.7217915,
+      Ic: -599.5549605,
+      Va: 0.027457903,
+      Vb: -0.041623248,
+      Vc: 0.014165345
+    }
+  },
+  abcg: {
+    code: '1111',
+    row_id: 5162,
+    values: {
+      Ia: -732.5098232,
+      Ib: 793.904274,
+      Ic: -61.39671453,
+      Va: 0.004658997,
+      Vb: 0.034156349,
+      Vc: -0.038815346
+    }
+  }
+};
+
+const PRESET_NAMES = {
+  normal: 'Normal',
+  ag: 'A–G',
+  abg: 'AB–G',
+  bc: 'B–C',
+  abc: 'ABC',
+  abcg: 'ABC–G'
+};
+
+let selected = 'normal';
+let busy = false;
+let currentCode = null;
+let playing = true;
+let phaseShift = 0;
+
+/* CLOCK */
+function clock() {
+  $('clock').textContent = new Date().toLocaleTimeString(
+    'id-ID', { hour12: false }
+  );
+}
+clock();
+setInterval(clock, 1000);
+
+/* CONCEPTUAL WAVEFORM */
+const canvases = [$('vCanvas'), $('iCanvas')];
+const contexts = canvases.map(c => c.getContext('2d'));
+let lastFrame = 0;
+
+function resize() {
+  canvases.forEach(c => {
+    const rect = c.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    c.width = Math.max(1, Math.round(rect.width * dpr));
+    c.height = Math.max(1, Math.round(rect.height * dpr));
+  });
+}
+window.addEventListener('resize', resize);
+resize();
+
+const value = id => Number($(id).value) || 0;
+
+function draw(ctx, canvas, ids) {
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.width;
+  const h = canvas.height;
+  const mid = h / 2;
+
+  ctx.clearRect(0, 0, w, h);
+  ctx.strokeStyle = '#ffffff0c';
+  ctx.lineWidth = dpr;
+  ctx.beginPath();
+
+  for (let x = 24*dpr; x < w; x += 24*dpr) {
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, h);
+  }
+  for (let y = 24*dpr; y < h; y += 24*dpr) {
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y);
+  }
+  ctx.stroke();
+
+  ctx.strokeStyle = '#ffffff24';
+  ctx.beginPath();
+  ctx.moveTo(0, mid);
+  ctx.lineTo(w, mid);
+  ctx.stroke();
+
+  const v = ids.map(value);
+  const scale = Math.max(.000001, ...v.map(Math.abs));
+
+  v.forEach((n, i) => {
+    const amplitude = 43*dpr*Math.min(Math.abs(n)/scale, 1);
+    const sign = n < 0 ? -1 : 1;
+
+    ctx.beginPath();
+    ctx.strokeStyle = colors[i];
+    ctx.lineWidth = 1.7*dpr;
+
+    for (let x = 0; x <= w; x += 2) {
+      const y = mid - sign*amplitude*Math.sin(
+        2*Math.PI*x/(w/2.15)
+        - phaseShift
+        + i*2*Math.PI/3
+      );
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  });
+}
+
+function animate(now) {
+  if (now - lastFrame > 32) {
+    lastFrame = now;
+    if (playing && !reduced) phaseShift += .04;
+
+    draw(contexts[0], canvases[0], ['va','vb','vc']);
+    draw(contexts[1], canvases[1], ['ia','ib','ic']);
+
+    $('vRead').textContent = ['va','vb','vc']
+      .map((id,i) => `${names[i]} ${value(id).toFixed(4)}`)
+      .join(' · ');
+
+    $('iRead').textContent = ['ia','ib','ic']
+      .map((id,i) => `${names[i]} ${value(id).toFixed(2)}`)
+      .join(' · ');
+  }
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+
+$('play').onclick = () => {
+  playing = true;
+  $('play').classList.add('on');
+  $('hold').classList.remove('on');
+};
+$('hold').onclick = () => {
+  playing = false;
+  $('hold').classList.add('on');
+  $('play').classList.remove('on');
+};
+
+/* RESET */
+function resetResult() {
+  currentCode = null;
+  $('resultTag').textContent = 'READY';
+  $('stageText').textContent = 'AWAITING INPUT';
+  $('progress').style.width = '0%';
+
+  document.querySelectorAll('.step').forEach((s,i) => {
+    s.classList.remove('active','done');
+    s.querySelector('b').textContent = `0${i+1}`;
+  });
+
+  $('result').innerHTML = `
+    <div class="idle">
+      <div>
+        <div class="idle-icon">⌁</div>
+        <h3>Ready to inspect</h3>
+        <p>Select an actual dataset sample or enter your own raw values.</p>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll('#legend code')
+    .forEach(c => c.classList.remove('hit'));
+}
+
+function clearErrors() {
+  $('error').classList.remove('show');
+  document.querySelectorAll('.input-wrap')
+    .forEach(w => w.classList.remove('invalid'));
+}
+
+/* DATASET PRESET */
+function applyPreset(key) {
+  if (busy) return;
+  selected = key;
+
+  if (key) {
+    const data = PRESETS[key].values;
+    for (const [name,v] of Object.entries(data)) {
+      $(name.toLowerCase()).value = v;
+    }
+  }
+
+  document.querySelectorAll('.sample').forEach(b => {
+    b.classList.toggle(
+      'active', b.dataset.preset === key
+    );
+  });
+
+  $('scenario').textContent = key
+    ? `Dataset row ${PRESETS[key].row_id} · reference: ${PRESET_NAMES[key]} (${PRESETS[key].code})`
+    : 'Custom raw input · demo comparison only';
+
+  const phases = key
+    ? CLASSES[PRESETS[key].code].phases
+    : [];
+
+  document.querySelectorAll('.phase').forEach(c => {
+    c.classList.toggle(
+      'affected',
+      phases.includes(c.dataset.phase)
+    );
+  });
+
+  clearErrors();
+  resetResult();
+}
+
+document.querySelectorAll('.sample').forEach(b => {
+  b.addEventListener('click', () => applyPreset(b.dataset.preset));
+});
+$('reset').onclick = () => applyPreset('normal');
+
+fields.forEach(id => {
+  $(id).addEventListener('input', () => {
+    if (!busy) applyPreset(null);
+  });
+});
+
+/* VALIDATION */
+function validate() {
+  clearErrors();
+  let valid = true;
+
+  fields.forEach(id => {
+    const input = $(id);
+    if (
+      input.value.trim() === '' ||
+      !Number.isFinite(Number(input.value))
+    ) {
+      valid = false;
+      input.closest('.input-wrap').classList.add('invalid');
+    }
+  });
+
+  $('error').classList.toggle('show', !valid);
+  return valid;
+}
+
+/* ANALYSIS STAGES */
+function stage(n) {
+  document.querySelectorAll('.step').forEach((s,i) => {
+    s.classList.toggle('done', i < n);
+    s.classList.toggle('active', i === n);
+    s.querySelector('b').textContent = i < n ? '✓' : `0${i+1}`;
+  });
+
+  $('progress').style.width = `${(n+.5)/3*100}%`;
+  $('stageText').textContent = [
+    'VALIDATING', 'DEMO LOOKUP', 'VISUALIZING'
+  ][n];
+  $('resultTag').textContent = [
+    'VALIDATING', 'DEMO', 'RENDERING'
+  ][n];
+}
+
+function finish() {
+  document.querySelectorAll('.step').forEach(s => {
+    s.classList.remove('active');
+    s.classList.add('done');
+    s.querySelector('b').textContent = '✓';
+  });
+  $('progress').style.width = '100%';
+  $('stageText').textContent = 'DEMO COMPLETE';
+  $('resultTag').textContent = 'COMPLETE';
+}
+
+/* MANUAL DEMO ONLY */
+// Nearest single example; NOT the actual KNN model.
+function manualDemo(data) {
+  const normalization = {
+    Ia:900, Ib:900, Ic:900,
+    Va:.63, Vb:.63, Vc:.63
+  };
+
+  let best = null;
+  let score = Infinity;
+
+  for (const ex of Object.values(PRESETS)) {
+    const d = Object.keys(normalization).reduce((sum,k) => {
+      const diff = (data[k] - ex.values[k]) / normalization[k];
+      return sum + diff*diff;
+    }, 0);
+
+    if (d < score) {
+      score = d;
+      best = ex;
+    }
+  }
+
+  return best.code;
+}
+
+/* INTERACTIVE SCHEMATIC */
+function schematic(code) {
+  const {phases, ground} = CLASSES[code];
+  const ys = {A:48, B:91, C:134};
+
+  let s = `
+    <svg viewBox="0 0 520 190"
+         role="group"
+         aria-label="Conceptual fault topology, not physical location">
+      <rect width="520" height="190" fill="#191a1f"/>
+      <text x="18" y="20" font-size="10" fill="#838490">SOURCE</text>
+      <text x="449" y="20" font-size="10" fill="#838490">LOAD</text>
+  `;
+
+  names.forEach((p,i) => {
+    const y = ys[p];
+    const hit = phases.includes(p);
+    const col = hit ? '#f0ac4a' : '#5c6070';
+
+    s += `
+      <g class="conductor"
+         data-phase="${p}"
+         tabindex="0"
+         role="button"
+         aria-label="Inspect phase ${p}">
+        <rect x="10" y="${y-17}" width="498"
+              height="34" fill="transparent"/>
+        <text x="20" y="${y+4}"
+              font-size="12" fill="${colors[i]}">${p}</text>
+        <circle cx="57" cy="${y}" r="5"
+                fill="none" stroke="${col}" stroke-width="1.7"/>
+        <path d="M65 ${y} H478"
+              stroke="${col}"
+              stroke-width="${hit?3:1.7}"
+              fill="none"/>
+        <circle cx="478" cy="${y}" r="4"
+                fill="${colors[i]}"/>
+      </g>
+    `;
+  });
+
+  if (phases.length > 1) {
+    const y = phases.map(p => ys[p]);
+    s += `
+      <path d="M274 ${Math.min(...y)}
+               V${Math.max(...y)}"
+            fill="none"
+            stroke="#f0ac4a"
+            stroke-width="3"/>
+    `;
+  }
+
+  if (ground && phases.length) {
+    s += `
+      <path d="M274 ${Math.max(...phases.map(p=>ys[p]))}
+               V160 M259 160 H289 M264 165 H284 M269 170 H279"
+            stroke="#f0ac4a"
+            stroke-width="2"
+            fill="none"/>
+    `;
+  }
+
+  return s + '</svg>';
+}
+
+function insight(code, phase) {
+  const {phases, ground} = CLASSES[code];
+
+  if (!phases.includes(phase)) {
+    return `Phase ${phase} is not an involved conductor in the illustrated ${CLASSES[code].name} topology.`;
+  }
+
+  return ground
+    ? `Phase ${phase} participates in the illustrated fault path involving ground.`
+    : `Phase ${phase} participates in the illustrated phase-to-phase fault.`;
+}
+
+function focus(phase) {
+  if (!currentCode) return;
+
+  document.querySelectorAll('.conductor').forEach(g => {
+    g.classList.toggle(
+      'selected', g.dataset.phase === phase
+    );
+    g.classList.toggle(
+      'dim', g.dataset.phase !== phase
+    );
+  });
+
+  document.querySelectorAll('.focus').forEach(b => {
+    b.classList.toggle(
+      'active', b.dataset.phase === phase
+    );
+  });
+
+  $('insightTitle').textContent = `Phase ${phase} inspection`;
+  $('insightText').textContent = insight(currentCode, phase);
+}
+
+/* RESULT RENDER */
+function showResult(code, mode, sourceRow) {
+  currentCode = code;
+
+  const c = CLASSES[code];
+  const ok = code === '0000';
+
+  const sourceLabel = mode === 'reference'
+    ? 'Dataset reference label'
+    : 'UI-only nearest-example preview';
+
+  const sourceValue = mode === 'reference'
+    ? `Test row ${sourceRow}`
+    : 'Manual input';
+
+  $('result').innerHTML = `
+    <div class="result-top">
+      <div class="cls ${ok?'normal':'fault'}">${c.name}</div>
+      <span class="result-badge ${ok?'normal':''}">
+        ${mode==='manual'
+          ? '◈ UI DEMO ONLY'
+          : (ok?'○ NORMAL REFERENCE':'⚡ FAULT REFERENCE')}
+      </span>
+    </div>
+
+    <p class="desc">${c.description}</p>
+
+    <div class="diagram">
+      <div class="diagram-title">
+        Fault topology inspector · conceptual
+      </div>
+      ${schematic(code)}
+
+      <div class="diagram-toolbar">
+        <span>Inspect a phase</span>
+        <button class="focus" data-phase="A">PHASE A</button>
+        <button class="focus" data-phase="B">PHASE B</button>
+        <button class="focus" data-phase="C">PHASE C</button>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">↳</div>
+      <div>
+        <strong id="insightTitle">Topology overview</strong>
+        <p id="insightText">
+          ${ok
+            ? 'No fault path is highlighted in the conceptual schematic.'
+            : `Highlighted: ${c.phases.join(', ')}${c.ground?' + ground':''}. Select a phase for an explanation.`}
+        </p>
+      </div>
+    </div>
+
+    <div class="meta">
+      <span>LABEL CODE · ${code} (G C B A)</span>
+      <span>SOURCE · ${sourceValue}</span>
+      <span>MODE · ${sourceLabel}</span>
+    </div>
+
+    <p class="note">
+      ${mode==='reference'
+        ? 'This is the known class label stored with the test row, not a fresh prediction.'
+        : 'This manual preview uses a trivial sample-comparison mock, NOT the trained Scikit-Learn model.'}
+      Diagram shows fault type only, never physical fault location.
+    </p>
+  `;
+
+  document.querySelectorAll('.focus').forEach(b => {
+    b.onclick = () => focus(b.dataset.phase);
+  });
+
+  document.querySelectorAll('.conductor').forEach(g => {
+    g.onclick = () => focus(g.dataset.phase);
+    g.onkeydown = e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        focus(g.dataset.phase);
+      }
+    };
+  });
+
+  document.querySelectorAll('#legend code').forEach(el => {
+    el.classList.toggle(
+      'hit', el.dataset.class === code
+    );
+  });
+}
+
+
+/* PHASE/AI — REAL ML INTEGRATION */
+
+const sleep = ms =>
+  new Promise(resolve => setTimeout(resolve, ms));
+
+/* CHECK API CONNECTION */
+
+async function checkAPI() {
+  const indicator = document.querySelector('.status');
+
+  try {
+    const response = await fetch('/health');
+
+    if (!response.ok) {
+      throw new Error('API unavailable');
+    }
+
+    const state = await response.json();
+
+    indicator.innerHTML = `
+      <i style="background:var(--green)"></i>
+      MODEL READY · ${state.model}
+    `;
+
+  } catch {
+    indicator.innerHTML = '<i></i> API OFFLINE';
+  }
+}
+
+/* RENDER REAL ML RESULT */
+
+function showMLResult(output, presetKey) {
+  const code = String(output.fault_code);
+  const cls = CLASSES[code];
+
+  if (!cls) {
+    throw new Error(
+      `Kode kelas tidak dikenal: ${code}`
+    );
+  }
+
+  currentCode = code;
+
+  const normal = code === '0000';
+
+  // Bandingkan dengan label referensi dataset
+  // jika menggunakan salah satu preset.
+  const reference = presetKey
+    ? PRESETS[presetKey].code
+    : null;
+
+  const referenceText = reference
+    ? `REFERENCE · ${reference} (${reference === code ? 'MATCH' : 'DIFFERENT'})`
+    : 'REFERENCE · NOT AVAILABLE';
+
+  $('result').innerHTML = `
+    <div class="result-top">
+
+      <div class="cls ${normal ? 'normal' : 'fault'}">
+        ${cls.name}
+      </div>
+
+      <span class="result-badge ${normal ? 'normal' : ''}">
+        ML PREDICTION
+      </span>
+
+    </div>
+
+    <p class="desc">
+      ${cls.description}
+    </p>
+
+    <div class="diagram">
+
+      <div class="diagram-title">
+        Fault topology inspector · conceptual
+      </div>
+
+      ${schematic(code)}
+
+      <div class="diagram-toolbar">
+        <span>Inspect a phase</span>
+
+        <button type="button"
+                class="focus"
+                data-phase="A">
+          PHASE A
+        </button>
+
+        <button type="button"
+                class="focus"
+                data-phase="B">
+          PHASE B
+        </button>
+
+        <button type="button"
+                class="focus"
+                data-phase="C">
+          PHASE C
+        </button>
+
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-icon">↳</div>
+
+      <div>
+        <strong id="insightTitle">
+          Topology overview
+        </strong>
+
+        <p id="insightText">
+          ${normal
+            ? 'No fault path is highlighted in the conceptual schematic.'
+            : `Highlighted: ${cls.phases.join(', ')}${cls.ground ? ' + ground' : ''}. Select a phase to inspect.`
+          }
+        </p>
+      </div>
+    </div>
+
+    <div class="meta">
+      <span>MODEL · ${output.model}</span>
+      <span>PREDICTION · ${code}</span>
+      <span>${referenceText}</span>
+    </div>
+
+    <p class="note">
+      Class prediction is generated by Scikit-Learn.
+      The diagram illustrates fault type,
+      not physical location.
+    </p>
+  `;
+
+  // Mempertahankan interactive phase inspector.
+  document.querySelectorAll('.focus').forEach(b => {
+    b.onclick = () => focus(b.dataset.phase);
+  });
+
+  document.querySelectorAll('.conductor').forEach(g => {
+    g.onclick = () => focus(g.dataset.phase);
+
+    g.onkeydown = event => {
+      if (
+        event.key === 'Enter' ||
+        event.key === ' '
+      ) {
+        event.preventDefault();
+        focus(g.dataset.phase);
+      }
+    };
+  });
+
+  // Menyoroti kelas hasil prediksi di legend.
+  document.querySelectorAll('#legend code').forEach(c => {
+    c.classList.toggle(
+      'hit',
+      c.dataset.class === code
+    );
+  });
+}
+
+/* RUN REAL ML PREDICTION */
+
+async function run() {
+  if (busy || !validate()) return;
+
+  busy = true;
+
+  const button = $('analyze');
+
+  const controls = document.querySelectorAll(
+    '.phase input, .sample, #reset'
+  );
+
+  const selectedAtStart = selected;
+
+  // Membaca enam nilai input.
+  const input = Object.fromEntries(
+    fields.map(id => [
+      id[0].toUpperCase() + id.slice(1),
+      Number($(id).value)
+    ])
+  );
+
+  button.disabled = true;
+  button.textContent = 'Predicting…';
+
+  controls.forEach(el => el.disabled = true);
+
+  $('result').innerHTML = `
+    <div class="loading">
+      <div>
+        <div class="spinner"></div>
+
+        <h3 id="loadingTitle">
+          RUNNING MODEL
+        </h3>
+
+        <p id="loadingDesc">
+          Sending six features to Flask
+        </p>
+      </div>
+    </div>
+  `;
+
+  try {
+    // STAGE 1: INPUT VALIDATION
+    stage(0);
+
+    $('stageText').textContent = 'VALIDATING INPUT';
+
+    await sleep(reduced ? 0 : 120);
+
+    // STAGE 2: ML INFERENCE
+    stage(1);
+
+    $('stageText').textContent = 'MODEL INFERENCE';
+
+    $('loadingTitle').textContent =
+      'SCIKIT-LEARN INFERENCE';
+
+    $('loadingDesc').textContent =
+      'Waiting for prediction from Flask';
+
+    // Mengirim enam parameter ke Python.
+    const response = await fetch('/predict', {
+      method: 'POST',
+
+      headers: {
+        'Content-Type': 'application/json'
+      },
+
+      body: JSON.stringify(input)
+    });
+
+    // Membaca respons model.
+    const output = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        output.error || 'Request failed'
+      );
+    }
+
+    // STAGE 3: VISUALIZATION
+    stage(2);
+
+    $('stageText').textContent = 'VISUALIZING';
+
+    showMLResult(output, selectedAtStart);
+
+    finish();
+
+    $('stageText').textContent =
+      'PREDICTION COMPLETE';
+
+  } catch (error) {
+    resetResult();
+
+    $('resultTag').textContent = 'ERROR';
+
+    const errorBox = document.createElement('div');
+    errorBox.className = 'idle';
+
+    const message = document.createElement('p');
+    message.textContent =
+      `Gagal memprediksi: ${error.message}`;
+
+    errorBox.appendChild(message);
+
+    $('result').replaceChildren(errorBox);
+
+  } finally {
+    busy = false;
+
+    button.disabled = false;
+    button.textContent = 'Run ML prediction ↗';
+
+    controls.forEach(el => el.disabled = false);
+  }
+}
+
+/* INITIALIZE */
+
+$('analyze').addEventListener('click', run);
+
+$('analyze').textContent = 'Run ML prediction ↗';
+
+document.querySelector('.content .note').textContent =
+  'Prediksi berasal dari model Scikit-Learn. Sampel dataset memiliki label referensi untuk perbandingan. Satuan dan skala fisik belum terverifikasi.';
+
+checkAPI();
+applyPreset('normal');
+
+
+</script>
+</body>
+</html>

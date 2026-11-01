@@ -1,0 +1,12 @@
+RINGKASAN EKSPERIMEN
+Model terpilih menurut CV train: KNN
+Parameter: {'model__n_neighbors': 15, 'model__weights': 'uniform'}
+CV macro F1 pemilihan parameter: 0.7973
+Uji acak - accuracy: 0.8168; macro F1: 0.7838
+Uji blok - accuracy: 0.7637; macro F1: 0.6998
+Total data: 7861. Pembagian: {'train': 4714, 'test_block': 1574, 'test_random': 1179, 'purge': 394}
+
+Interpretasi wajib: bandingkan train dan CV; jelaskan kelas yang tertukar pada confusion matrix;
+bandingkan uji acak dan uji blok. Skor rendah pada uji blok perlu dilaporkan, bukan dihapus.
+Seluruh data adalah benchmark simulasi. Belum ada validasi sensor nyata, kejadian simulasi baru,
+atau pengukuran latensi Jetson. Tidak ada klaim bahwa sistem siap sebagai proteksi jaringan nyata.

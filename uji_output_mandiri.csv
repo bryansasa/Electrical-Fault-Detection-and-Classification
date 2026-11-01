@@ -1,0 +1,1180 @@
+fault_code,fault_name
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0000,Normal
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0000,Normal
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+0000,Normal
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+0000,Normal
+0110,BC: antar fase B dan C
+0000,Normal
+0000,Normal
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+0111,ABC: tiga fase
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+1001,A-G: fase A ke tanah
+0000,Normal
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+1111,ABC-G: tiga fase ke tanah
+1111,ABC-G: tiga fase ke tanah
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0111,ABC: tiga fase
+1111,ABC-G: tiga fase ke tanah
+0111,ABC: tiga fase
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1011,AB-G: fase A dan B ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0111,ABC: tiga fase
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0000,Normal
+1111,ABC-G: tiga fase ke tanah
+1001,A-G: fase A ke tanah
+0000,Normal
+0000,Normal
+0000,Normal
+1011,AB-G: fase A dan B ke tanah
+1011,AB-G: fase A dan B ke tanah
+0000,Normal
+0110,BC: antar fase B dan C
+1001,A-G: fase A ke tanah
+0110,BC: antar fase B dan C
+0110,BC: antar fase B dan C
+1011,AB-G: fase A dan B ke tanah
+0110,BC: antar fase B dan C
+1111,ABC-G: tiga fase ke tanah
+0000,Normal
