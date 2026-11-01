@@ -107,6 +107,4 @@ Pastikan dependensi terpasang (`pip install -r requirements.txt`).
 - **Bryan:** Edge Computing Hardware, Deployment NVIDIA Jetson Nano, REST API & Tunneling, Pengukuran Latensi.
 - **Reno:** Eksplorasi Dataset, Feature Engineering, Training Pipeline Model (KNN).
 - **Arif:** Web Interface UI/UX, Cloud Hosting Render.
-- **Anggota 4:** Preprocessing data & pembagian partisi (Purge, Train, Block, Random).
-- **Anggota 5:** Evaluasi metrik, cross-validation, dan analisis confusion matrix.
-- **Anggota 6:** Integrasi sistem, penyusunan laporan 5–8 halaman, dan dokumentasi video YouTube.
+- **Fakhri, Rido, dan Daffa:** Integrasi sistem, penyusunan laporan 5–8 halaman, dan dokumentasi video YouTube.
